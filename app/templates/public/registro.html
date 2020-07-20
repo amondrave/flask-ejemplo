@@ -1,10 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "public/index.html" %}
 
-</body>
-</html>
+{% block css%}
+<link rel="stylesheet" href="{{ url_for('static',filename='css/main.css') }}">
+{% endblock %}
+
+{% block mensaje %}
+<div class="container">
+    <h1 class="text-center" style="color: #3B666B">{{mensaje}}</h1>
+</div>
+
+{% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+              <span>Bienvenido al inicio de este CRUD realizado en Flask, por favor registrese en el siguiente formulario
+                  para iniciar y ver el contenido
+              </span>
+
+              <span>
+                  Si ya tiene una cuennta ingrese a este <a href="/">link</a> para volver al inicio de sesión
+              </span>
+        </div>
+        <div class="col-md-6">
+            <div class="formulario">
+                <form action="/registro" method="POST">
+                    <div class="form-group">
+                        <label for="username"> Nombre de usuario </label>
+                        <input type="text" class="form-control" name="username" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Correo electronico</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Contraseña</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

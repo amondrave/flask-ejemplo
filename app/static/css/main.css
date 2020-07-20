@@ -1,0 +1,10 @@
+body{
+    margin: 0;
+    padding: auto;
+}
+
+span{
+    display: block;
+    color: #11557C;
+    font-size: 18px;
+}

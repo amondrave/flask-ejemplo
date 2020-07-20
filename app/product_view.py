@@ -1,5 +1,7 @@
 from  app import app
+from flask import render_template
 
 @app.route("/productos")
 def obtener_productos():
-    return "<h1>Esta se la la lista de productos que están en el sistema</h1>"
+    usuario = "Angel"
+    return render_template("product/inicio.html",usuario = usuario)
