@@ -1,10 +1,13 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from .conexion import app
+from .conexion import db
+from app.models import models
 
 
-app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////home/discarok/Documentos/py-flask-env/base.db"
-db = SQLAlchemy(app)
+#Creacion del servidor
+
+db.create_all()
+
 
 from app import views
 from app import product_view
+

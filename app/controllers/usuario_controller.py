@@ -7,13 +7,12 @@ class UsuarioControlador:
         self.usuario = usuario
 
     def agregar_usuario(self,usuario):
-        try:
-            db.create_session()
-            usuario = usuario
+        try:            
             db.session.add(usuario)
             db.session.commit()
             return True
         except:
             print(usuario)
-            print("Algo salio mal")
+            print("Algo salio mal")        
             return False
+
