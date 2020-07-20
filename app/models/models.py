@@ -6,16 +6,11 @@ class Usuario(db.Model):
     correo = db.Column(db.String(50),index=True,nullable=False,unique=True)
     contrasena = db.Column(db.String(100),nullable=False)
 
-    def __init__(self,nombre_usuario,correo,contrasena):
-        self.nombre_usuario = nombre_usuario
-        self.correo = correo
-        self.contrasena = contrasena
-
     def __str__(self):
             return "Usuario: {} ".format(self.nombre_usuario)
 
     def __repr__(self):
-         str = '<Usuario %r>' % self.nombre_usuario
+         return '<Usuario %r>' % self.nombre_usuario
 
 
 
