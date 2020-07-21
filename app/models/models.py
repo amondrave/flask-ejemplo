@@ -18,11 +18,7 @@ class Producto(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     nombre = db.Column(db.String(100),nullable=False)
     precio = db.Column(db.Float,nullable=False)
-
-    def __init__(self,nombre,precio):
-        self.nombre = nombre
-        self.precio = precio
-
+    tipo_producto = db.Column(db.Integer,db.ForeignKey('tipo.id'))
     def retornar_productos(self):
         lista = []
 
@@ -30,3 +26,16 @@ class Producto(db.Model):
 
     def __repr__(self):
         return '<Producto %r>' % self.nombre
+    def __str__(self):
+        return "Producto: {} precio: {}".format(self.nombre,self.precio)
+
+
+class Tipo(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    nombre = db.Column(db.String(70), index=True, unique=True)
+    producto = db.relationship('Usuario', backref = 'tipo', lazy = True )
+    def __repr__(self):
+        return "<Tipo %r>" % self.nombre
+
+    def __str__(self):
+        return "Tipo: {}".format(self.nombre)
