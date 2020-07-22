@@ -33,7 +33,7 @@ class Producto(db.Model):
 class Tipo(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     nombre = db.Column(db.String(70), index=True, unique=True)
-    producto = db.relationship('Usuario', backref = 'tipo', lazy = True )
+    producto = db.relationship('Producto', backref = 'tipo', lazy = True )
     def __repr__(self):
         return "<Tipo %r>" % self.nombre
 

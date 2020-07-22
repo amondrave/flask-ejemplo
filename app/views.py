@@ -11,7 +11,11 @@ def index():
         nombre_usuario = req.get("username")
         correo = req.get("email")
         contrasena = req.get("password")
-        print("los datos son: ",nombre_usuario,correo,contrasena)
+        usuario = Usuario(nombre_usuario=nombre_usuario,correo=correo,contrasena=contrasena)
+        usuario_controlador = UsuarioControlador(usuario)
+        existe = usuario_controlador.existe_usuario(nombre_usuario,correo,contrasena)
+        if existe == True:
+            return redirect(url_for("perfil"))
         return  redirect(request.url)
     return render_template("public/index.html",titulo = titulo)
 ##Registro de usuarios en el sistema
@@ -41,4 +45,8 @@ def registro():
 @app.route("/error")
 def error():
     return  render_template("public/error.html", alerta = "No se pudo agregar")
+@app.route("/perfil")
+def perfil():
+    usuario = "Tengo que mejorar"
+    return render_template("product/inicio.html", usuario = usuario)
 
